@@ -8,7 +8,7 @@ import java.net.URL;
 public class App extends JApplet {
 
     String message;
-    String filePath = "./Users/bruno.devesa/IdeaProjects/AppletTest2/src/xico.jpg";
+    String filePath = "./Users/bruno.devesa/IdeaProjects/AppletTest2/xico.jpg";
     URL base;
     MediaTracker mt;
     Image pic;
@@ -20,17 +20,22 @@ public class App extends JApplet {
 
     public void init(){
 
+        base = App.class.getResource("xico.jpg");
         img = getImage(getDocumentBase(), "xico.jpg");
+
 
     }
     public void paint(Graphics g) {
 
-
+        URL imageURL = this.getClass().getResource("xico.jpg");
+        Image image = Toolkit.getDefaultToolkit().createImage(imageURL);
+        Image scaled = image.getScaledInstance(100, 150, Image.SCALE_SMOOTH);
+        JLabel label = new JLabel(new ImageIcon(scaled));
 
         //tr = new MediaTracker(this);
       //  tr.addImage(img,220);
         g.drawImage(img, 50, 50, this);
-        g.drawString("cenas", 25, 25);
+        g.drawString("chico", 25, 25);
 
 
         // g.drawArc(23, 34, 45, 500, 60, 70);
